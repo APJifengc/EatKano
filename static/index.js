@@ -198,7 +198,8 @@
         _clearttClsReg = / t{1,2}\d+| bad/;
 
     w.refreshGameLayer = function(box, loop, offset) {
-        let i = Math.floor(Math.random() * 1000) % 4 + (loop ? 0 : 4);
+        let q = true
+        let i = (q ? 2 : 1) + (loop ? 0 : 4);
         for (let j = 0; j < box.children.length; j++) {
             let r = box.children[j],
                 rstyle = r.style;
@@ -214,7 +215,8 @@
                 });
                 r.className += ' t' + (Math.floor(Math.random() * 1000) % 5 + 1);
                 r.notEmpty = true;
-                i = (Math.floor(j / 4) + 1) * 4 + Math.floor(Math.random() * 1000) % 4;
+                i = (Math.floor(j / 4) + 1) * 4 + (q ? 1 : 2);
+                q = !q;
             } else {
                 r.notEmpty = false;
             }
